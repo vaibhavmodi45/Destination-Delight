@@ -11,39 +11,61 @@
     <title>Destination Delight</title>
     <link rel="icon" href="Destination Delight (1).png">
   </head>
-  <body class="container-fluid p-4">
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary" id="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="./assets/Destination Delight (1).png"
+            alt="Logo"
+            width="50"
+            height="45"
+            class="d-inline-block align-text-top"
+            style="border-radius: 13px"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse mx-auto p-2"
+          id="navbarNavDropdown"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
 
-   <nav class="navbar navbar-expand-lg  fixed-top bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">
-      <img src="Destination Delight (1).png" alt="Logo" width="50" height="45" class="d-inline-block align-text-top" style="border-radius: 13px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse mx-auto p-2" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="\index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about.html">About Us</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link active" href="PopularDestination.html">Popular Destination's</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="Blog.html">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Contact.html">Contact Us</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+            <li class="nav-item">
+              <a class="nav-link" href="PopularDestination.html"
+                >Popular Destination's</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="Blog.html">Blog</a>
+            </li>
+            <li class="nav-item-right">
+              <a class="nav-link" href="Contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <form class="d-flex">
+          <a href="Contact.html"><button class="btn btn-outline-primary">Contact Us</button></a>
+        </form>
+      </div>
+    </nav>
 
 <div id="preloader" style="background: #000 url(loadernew.gif) no-repeat center center;background-size:25px;height:100vh;width: 100%;position: fixed;z-index: 100;">
 </div>
@@ -54,15 +76,164 @@
       <h1 class="fw-light"><strong style="font-weight: 700;text-decoration: #000;color: blueviolet;">Unforgettable Adventure's</strong></h1>
       <p class="lead text-body-secondary">Immerse yourself in the vibrant tapestry of India with Destination Delight. Explore <b style="font-weight: 500;">Popular Destinations ⬇️</b> across diverse landscapes, crafting a unique and unforgettable journey.</p>
     </div>
-  </div>
+  </div><hr>
 </section>
+
+<!--Search Functionality start-->
+<div class="text-center mt-2 mb-3">
+  <h1><i><b>Explore Incredible <span style="color: orangered;">In</span><span style="color: rgb(149, 149, 149);">d</span><span style="color: green;">ia</span></b></i></h1>
+  <p class="lead">Discover curated destinations for your next adventure.</p>
+  <div class="d-flex justify-content-center align-items-center gap-3 my-3 p-4">
+      <select id="categoryFilter" class="form-select w-md-25">
+          <option value="">All Categories</option>
+          <option value="Hill Stations">Hill Stations</option>
+          <option value="Beaches">Beaches</option>
+          <option value="Heritage Sites">Heritage Sites</option>
+          <option value="Adventure Destinations">Adventure Destinations</option>
+          <option value="Pilgrimage Places">Pilgrimage Places</option>
+      </select>
+      <div class="w-md-50">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search destinations...">
+      </div>
+  </div>
+  <div id="searchResults" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
+      </div>
+  <div id="loading" class="text-center my-3" style="display:none;">
+      <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2">Fetching amazing destinations...</p>
+  </div>
+  <div id="noResults" class="text-center my-3" style="display:none;">
+      <p class="lead">No destinations found matching your search criteria.</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById('searchInput');
+  const categoryFilter = document.getElementById('categoryFilter');
+  const searchResultsContainer = document.getElementById('searchResults');
+  const loadingIndicator = document.getElementById('loading');
+  const noResultsMessage = document.getElementById('noResults');
+  const destinationsByCategory = {
+      "Hill Stations": ["Manali", "Shimla", "Darjeeling", "Ooty"],
+      "Beaches": ["Goa", "Andaman & Nicobar Islands", "Puri", "Gokarna"],
+      "Heritage Sites": ["Jaipur", "Hampi", "Mysore", "Khajuraho"],
+      "Adventure Destinations": ["Rishikesh", "Ladakh", "Spiti Valley", "Auli"],
+      "Pilgrimage Places": ["Varanasi", "Kedarnath", "Amritsar", "Tirupati"]
+  };
+  let searchTimeout;
+
+  async function fetchDestinationData(destination) {
+      const apiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(destination)}`;
+
+      try {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+
+          if (data.type === 'standard') {
+              return data;
+          } else {
+              return null;
+          }
+      } catch (error) {
+          console.error('Error fetching destination data:', error);
+          return null;
+      }
+  }
+
+  function displayDestination(data) {
+      return `
+          <div class="col">
+              <div class="card h-100 shadow-sm">
+                  <img src="${data.thumbnail ? data.thumbnail.source : 'https://via.placeholder.com/400x300?text=Image+Not+Found'}" class="card-img-top" alt="${data.title}">
+                  <div class="card-body">
+                      <h5 class="card-title">${data.title}</h5>
+                      <p class="card-text">${data.extract ? data.extract.substring(0, 150) + '...' : 'No description available.'}</p>
+                  </div>
+                  <div class="card-footer bg-white border-top-0">
+                      <small class="text-muted">Explore more about ${data.title}</small>
+                  </div>
+              </div>
+          </div>
+      `;
+  }
+
+  async function handleSearch(query) {
+      searchResultsContainer.innerHTML = '';
+      noResultsMessage.style.display = 'none';
+      if (query.length > 2) {
+          loadingIndicator.style.display = 'block';
+          const data = await fetchDestinationData(query);
+          loadingIndicator.style.display = 'none';
+          if (data) {
+              searchResultsContainer.innerHTML = displayDestination(data);
+          } else {
+              noResultsMessage.style.display = 'block';
+          }
+      }
+  }
+
+  function displayDestination(data) {
+    const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(data.title)}`;
+    return `
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="${data.thumbnail ? data.thumbnail.source : 'https://via.placeholder.com/400x300?text=Image+Not+Found'}" class="card-img-top" alt="${data.title}">
+                <div class="card-body">
+                    <h5 class="card-title">${data.title}</h5>
+                    <p class="card-text">${data.extract ? data.extract.substring(0, 150) + '...' : 'No description available.'}</p>
+                </div>
+                <div class="card-footer bg-white border-top-0">
+                    <small class="text-muted">
+                        <a href="${googleSearchUrl}" target="_blank" rel="noopener noreferrer">Explore more about ${data.title}</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+  searchInput.addEventListener('input', function () {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+          handleSearch(this.value.trim());
+      }, 300); // Debounce delay of 300 milliseconds
+  });
+
+  categoryFilter.addEventListener('change', async function () {
+      const category = this.value;
+      searchResultsContainer.innerHTML = '';
+      noResultsMessage.style.display = 'none';
+
+      if (category && destinationsByCategory[category]) {
+          loadingIndicator.style.display = 'block';
+          for (const destination of destinationsByCategory[category]) {
+              const data = await fetchDestinationData(destination);
+              if (data) {
+                  searchResultsContainer.innerHTML += displayDestination(data);
+              }
+          }
+          loadingIndicator.style.display = 'none';
+          if (searchResultsContainer.innerHTML === '') {
+              noResultsMessage.style.display = 'block';
+          }
+      } else if (!category) {
+          searchResultsContainer.innerHTML = ''; // Clear results when "All Categories" is selected
+      }
+  });
+});
+</script>
+<!--Search Functionality start-->
 
 <div class="album py-5 bg-body-tertiary">
   <div class="container" style="transition: ease-in">
+    <h1 class="text-body-emphasis text-center p-4">Some <b style="color: blueviolet;">All Time Favorite</b> Destinations in India</h1>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Andaman.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="/assets/Andaman.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Andaman & Nicobar Islands</h3>
             <p class="card-text">Dive into an island paradise teeming with adventure and tranquility. Imagine snorkeling amidst vibrant coral reefs, kayaking through emerald mangroves, and building sandcastles on pristine beaches. Luxury houseboats offer a unique home base, while thrilling activities like jet skiing and parasailing add a touch of adrenaline. Nature enthusiasts can trek through lush rainforests, spotting exotic birds and playful monkeys along the way..</p>
@@ -75,7 +246,7 @@
       </div>
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="ladakh.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/ladakh.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Ladakh</h3>
             <p class="card-text"> Embark on a high-altitude escapade unlike any other. Imagine soaring through dramatic valleys, jeep safaris past ancient monasteries, and stargazing under a sky ablaze with a million twinkling stars. Cycle through breathtaking landscapes, capturing the majestic snow-capped peaks in every frame. This "land of high passes" promises adventure for all ages, from gentle hikes to heart-pounding mountain biking trails.</p>
@@ -88,7 +259,7 @@
       </div>
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Coorg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/Coorg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Coorg</h3>
             <p class="card-text">Escape to the "Scotland of India," a haven of rolling hills, emerald coffee plantations, and cascading waterfalls. Imagine indulging in aromatic coffee tastings, spotting elusive wildlife in national parks, and staying in charming plantation homestays. Hike through verdant trails, breathe in the crisp mountain air, and savor delicious Coorgi cuisine a blend of local spices and fresh flavors.</p>
@@ -102,7 +273,7 @@
 
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Tajpopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/Tajpopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Agra Taj Mahal</h3>
             <p class="card-text">Indulge in the timeless elegance of the Taj Mahal, a symbol of eternal love. Commissioned by Emperor Shah Jahan in memory of his beloved wife, Mumtaz Mahal, this ivory-white marble marvel stands as a testament to exquisite Mughal architecture. Experience the magic as the sun casts its hues upon the monument during sunrise and sunset, creating an ethereal ambiance.</p>
@@ -111,7 +282,7 @@
       </div>
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Jaipurpopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/Jaipurpopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Jaipur Pink City</h3>
             <p class="card-text">Step into the vibrancy of Jaipur, the capital of Rajasthan and famously known as the Pink City. Marvel at the grandeur of City Palace, an opulent complex reflecting the royal heritage of the region. Explore the Hawa Mahal with its intricate latticework and ascend the majestic Amber Fort for panoramic views of the city. Jaipur is a captivating blend of history, art, and culture.
@@ -121,7 +292,7 @@
       </div>
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Goapopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/Goapopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Goa</h3>
             <p class="card-text">Escape to the sun-soaked beaches of Goa, a haven for beach lovers and party enthusiasts alike. Bask in the laid-back vibes of Baga Beach, indulge in water sports, and explore the historic forts like Aguada. Goa's vibrant nightlife and delectable seafood add to the allure, making it a perfect destination for those seeking a mix of relaxation and excitement.</p>
@@ -130,7 +301,7 @@
       </div>
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Kerela.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/Kerela.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Kerala - God's Own Country</h3>
             <p class="card-text">Embrace the tranquility of Kerala, known as God's Own Country. Cruise through the backwaters of Alleppey on traditional houseboats, surrounded by lush greenery. Explore the tea plantations of Munnar, and witness cultural performances in Kochi. Kerala's diverse landscapes offer a serene escape for nature enthusiasts and those seeking a peaceful retreat.</p>
@@ -139,7 +310,7 @@
       </div>
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Shimlapopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/Shimlapopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Shimla - Queen of Hills</h3>
             <p class="card-text">Escape to the picturesque landscapes of Shimla, the 'Queen of Hills' in Himachal Pradesh. Enjoy panoramic views from the Ridge, stroll through the bustling Mall Road, and experience the charm of colonial architecture. Shimla invites travelers to embrace tranquility amidst pine-covered hills and snowy peaks, making it an ideal retreat for nature lovers.
@@ -149,7 +320,7 @@
       </div>
       <div class="col">
         <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="Mumbaipopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="325" src="assets/Mumbaipopu.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body">
             <h3>Mumbai - City of Dreams</h3>
             <p class="card-text">Experience the dynamic energy of Mumbai, India's financial and entertainment capital. From the iconic Gateway of India to the vibrant street life of Colaba, Mumbai captivates with its eclectic blend of history and modernity. Explore Bollywood studios, indulge in street food, and embrace the fast-paced lifestyle of this bustling metropolis.</p>
@@ -169,17 +340,17 @@
 
 <div class="row p-lg-5" style="margin-left: 10px;">
   <div class="col-lg-4">
-    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="jimcarpopu.jpg">
+    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="assets/jimcarpopu.jpg">
     <h2 class="fw-normal p-2">Jim Corbett National Park, Uttarakhand</h2>
     <p>Venture into the wilderness of Jim Corbett National Park, where families can bond amidst the beauty of nature. Explore diverse wildlife through exciting safaris, from majestic elephants to elusive tigers. The park's serene landscapes provide a perfect backdrop for family picnics and nature walks.    </p>
   </div><!-- /.col-lg-4 -->
   <div class="col-lg-4">
-    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="ootypopu.jpg">
+    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="assets/ootypopu.jpg">
     <h2 class="fw-normal p-2">Ooty, Tamil Nadu</h2>
     <p>Escape to the charming hill station of Ooty, a family-friendly destination nestled in the Nilgiri Hills. Enjoy a scenic train ride on the Nilgiri Mountain Railway, explore the picturesque Botanical Gardens, and take a boat ride on Ooty Lake. The pleasant climate and lush landscapes make Ooty a delightful retreat for families.</p>
   </div><!-- /.col-lg-4 -->
   <div class="col-lg-4">
-    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="Mahabaleshwarpopu.jpg">
+    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="assets/Mahabaleshwarpopu.jpg">
     <h2 class="fw-normal p-2">Mahabaleshwar, Maharashtra</h2>
     <p>Discover the charm of Mahabaleshwar, a hill station known for its panoramic viewpoints and strawberry fields. Families can explore the lush landscapes, visit historic sites like Pratapgad Fort, and indulge in horse riding and boating. Mahabaleshwar offers a blend of nature and adventure for family bonding.</p>
   </div><!-- /.col-lg-4 -->
@@ -187,17 +358,17 @@
 
 <div class="row p-lg-5" style="margin-left: 10px;">
   <div class="col-lg-4">
-    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="Darjeeling, West Bengal.jpg">
+    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="assets/Darjeeling, West Bengal.jpg">
     <h2 class="fw-normal p-2">Darjeeling, West Bengal</h2>
     <p>Unwind in the Himalayan retreat of Darjeeling, where families can enjoy the scenic beauty and cultural richness. Take a ride on the Darjeeling Himalayan Railway, visit the Padmaja Naidu Himalayan Zoological Park, and savor the breathtaking views from Tiger Hill. Darjeeling is a family-friendly haven in the hills. </p>
   </div><!-- /.col-lg-4 -->
   <div class="col-lg-4">
-    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="Nanital.jpg">
+    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="assets/Nanital.jpg">
     <h2 class="fw-normal p-2">Nainital, Uttarakhand</h2>
     <p>Embrace the tranquility of Nainital, a picturesque destination surrounded by lakes and mountains. Families can enjoy boat rides on Naini Lake, explore the Naina Devi Temple, and take a cable car to Snow View Point. Nainital's serene ambiance and family-friendly attractions make it an ideal retreat.</p>
   </div><!-- /.col-lg-4 -->
   <div class="col-lg-4">
-    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="Ajanta and Ellora Caves, Maharashtra.jpg">
+    <img class="bd-placeholder-img rounded-4" width="340" height="340" src="assets/Ajanta and Ellora Caves, Maharashtra.jpg">
     <h2 class="fw-normal p-2">Ajanta and Ellora Caves, Maharashtra</h2>
     <p>Embark on a historical journey at the Ajanta and Ellora Caves, where families can explore ancient rock-cut architecture and intricate sculptures. The UNESCO World Heritage sites provide a captivating blend of history and art, offering an educational and enriching experience for families.</p>
   </div><!-- /.col-lg-4 -->
@@ -209,17 +380,16 @@
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15281717.140577404!2d72.07770283247426!3d20.755334217423034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1710336381813!5m2!1sen!2sin" width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
-<div class="container">
-  <footer class="py-3">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About Us</a></li>
-      <li class="nav-item"><a href="PopularDestination.html" class="nav-link px-2 text-body-secondary">Popular Destination</a></li>
-      <li class="nav-item"><a href="Blog.html" class="nav-link px-2 text-body-secondary">Blogs</a></li>
-      <li class="nav-item"><a href="Contact.html" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
-    </ul>
-  </footer>
-</div>
+<footer class="bg-body-secondary">
+  <ul class="nav justify-content-center">
+    <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+    <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About Us</a></li>
+    <li class="nav-item"><a href="PopularDestination.html" class="nav-link px-2 text-body-secondary">Popular Destination</a></li>
+    <li class="nav-item"><a href="Blog.html" class="nav-link px-2 text-body-secondary">Blogs</a></li>
+    <li class="nav-item"><a href="Contact.html" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+  </ul>
+  <p class="text-center text-body-secondary">All Rights Reserved © 2024 Developer,<br> Designed & Developed by <i>Vaibhav Modi</i></p>
+</footer>
 
 
 <script>
@@ -235,6 +405,61 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+    
+      // Hero section (Unforgettable Adventure's)
+      ScrollReveal().reveal('.text-center.container h1, .text-center.container p', {
+        delay: 200,
+        duration: 1000,
+        distance: '40px',
+        origin: 'bottom'
+      });
+    
+      // Destination cards
+      ScrollReveal().reveal('.album .card', {
+        delay: 150,
+        duration: 900,
+        distance: '60px',
+        origin: 'bottom',
+        interval: 100
+      });
+    
+      // Family-friendly destination images and texts
+      ScrollReveal().reveal('.row.p-lg-5 .col-lg-4', {
+        delay: 200,
+        duration: 1000,
+        distance: '50px',
+        origin: 'bottom',
+        interval: 200
+      });
+    
+      // "Explore Best Nearby Destination's" section
+      ScrollReveal().reveal('h1.fw-normal', {
+        delay: 100,
+        duration: 800,
+        distance: '40px',
+        origin: 'top'
+      });
+    
+      // Google Maps iframe
+      ScrollReveal().reveal('iframe', {
+        delay: 200,
+        duration: 1000,
+        distance: '60px',
+        origin: 'bottom'
+      });
+    
+      // Footer
+      ScrollReveal().reveal('footer', {
+        delay: 300,
+        duration: 1000,
+        distance: '40px',
+        origin: 'bottom'
+      });
+    </script>
+    
 
 </body>
 </html>
