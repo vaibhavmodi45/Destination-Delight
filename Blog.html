@@ -74,63 +74,59 @@
   <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary" id="navbar">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <img
-            src="./assets/Destination Delight (1).png"
-            alt="Logo"
-            width="50"
-            height="45"
-            class="d-inline-block align-text-top"
-            style="border-radius: 13px"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse mx-auto p-2"
-          id="navbarNavDropdown"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="PopularDestination.html"
-                >Popular Destination's</a
-              >
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="Blog.html">Blog</a>
-            </li>
-            <li class="nav-item-right">
-              <a class="nav-link" href="Contact.html">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-        <form class="d-flex">
-          <a href="Contact.html"
-            ><button class="btn btn-outline-primary">Contact Us</button></a
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="./assets/Destination Delight (1).png"
+              alt="Logo"
+              width="50"
+              height="45"
+              class="d-inline-block align-text-top"
+              style="border-radius: 13px"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-        </form>
-      </div>
-    </nav>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse mx-auto p-2"
+            id="navbarNavDropdown"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" href="PopularDestination.html"
+                  >Popular Destination's</a
+                >
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" href="Blog.html">Blog</a>
+              </li>
+              <li class="nav-item-right">
+                <a class="nav-link" href="travelHelpers.html">Travel Tools</a>
+              </li>
+            </ul>
+          </div>
+          <form class="d-flex">
+            <a href="Contact.html"><button class="btn btn-outline-primary"><a class="nav-link" href="Contact.html">Contact Us</a></button></a>
+          </form>
+        </div>
+      </nav>
 
     <!-- Hero Section -->
     <section class="hero mt-5">
@@ -305,19 +301,20 @@
       <h2 class="text-center section-title">💬 What Our Readers Say</h2>
       <div class="row g-4">
         <div class="col-md-4">
-          <blockquote class="blockquote p-3" style="outline: 1px solid black; padding: 5px;" >
+          <blockquote class="blockquote p-3" style="outline: 1px solid #777; padding: 5px;border-radius: 8px;
+border-radius: 8px;" >
             <p>“I found hidden gems I never knew existed. Perfect guides!”</p>
             <footer class="blockquote-footer">Ankita Sharma</footer>
           </blockquote>
         </div>
         <div class="col-md-4">
-          <blockquote class="blockquote p-3" style="outline: 1px solid black; padding: 5px;" >
+          <blockquote class="blockquote p-3" style="outline: 1px solid #777; padding: 5px; border-radius: 8px;" >
             <p>“The blogs are insightful and beautifully written!”</p>
             <footer class="blockquote-footer">Rohit Jain</footer>
           </blockquote>
         </div>
         <div class="col-md-4">
-          <blockquote class="blockquote p-3" style="outline: 1px solid black; padding: 5px;" >
+          <blockquote class="blockquote p-3" style="outline: 1px solid #777; padding: 5px; border-radius: 8px;" >
             <p>“Planning my Ladakh trip was so easy thanks to you!”</p>
             <footer class="blockquote-footer">Megha Verma</footer>
           </blockquote>
@@ -350,7 +347,16 @@
     </section>
 
     <!-- Footer -->
-    <footer>&copy; 2025 Destination Delight. All rights reserved.</footer>
+    <footer class="bg-body-secondary">
+        <ul class="nav justify-content-center">
+          <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About Us</a></li>
+          <li class="nav-item"><a href="PopularDestination.html" class="nav-link px-2 text-body-secondary">Popular Destination</a></li>
+          <li class="nav-item"><a href="Blog.html" class="nav-link px-2 text-body-secondary">Blogs</a></li>
+          <li class="nav-item"><a href="Contact.html" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">All Rights Reserved © 2024 Developer,<br> Designed & Developed by <i>Vaibhav Modi</i></p>
+      </footer>
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
