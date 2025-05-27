@@ -18,8 +18,8 @@
       color: #333;
     }
     .hero-section {
-      padding: 100px 20px;
-      background: linear-gradient(90deg, #8a2be2, #9370db);
+      padding: 200px 20px;
+      background-image: url("./assets/AItravel.jpg");
       color: white;
       text-align: center;
       position: relative;
@@ -27,7 +27,8 @@
     }
     .hero-section h1 {
       font-weight: 700;
-      font-size: 3rem;
+      font-size: 5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
     .hero-section p {
       font-size: 1.2rem;
@@ -51,12 +52,27 @@
       background-color: #8a2be2;
       border: none;
     }
+    .btn-tool-un {
+      background-color: #e2ba2b;
+      border: none;
+    }
+    .btn-tool-soon {
+      background-color: #e22b2b;
+      border: none;
+    }
     .btn-tool:hover {
       background-color: #5d3fd3;
     }
+    .section-title-why {
+      font-weight: 700;
+      margin: 30px 0 60px;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    
     .section-title {
       font-weight: 700;
-      margin: 60px 0 30px;
+      margin: 30px 0 20px;
       text-align: center;
       font-size: 2.5rem;
     }
@@ -67,45 +83,23 @@
       margin-bottom: 30px;
     }
     .why-use {
-      background-color: #f8f9fa;
-      padding: 40px;
+      padding: 80px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       margin-top: 40px;
     }
     .feedback-section {
-      background-color: #f8f9fa;
-      padding: 40px;
-      border-radius: 12px;
+      padding: 40px 0px 60px;
       text-align: center;
       margin-top: 40px;
     }
-    .testimonial-card {
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-    }
-    .testimonial-card img {
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      margin-bottom: 15px;
-    }
-    .footer {
-      background-color: #5d3fd3;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-      margin-top: 60px;
-    }
+
   </style>
 </head>
 <body>
 
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg fixed-top bg-light">
+  <nav class="navbar navbar-expand-lg fixed-top bg-light" style="box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.1);">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
         <img src="./assets/Destination Delight (1).png" alt="Logo" width="50" height="45" class="d-inline-block align-text-top" style="border-radius: 13px" />
@@ -146,7 +140,7 @@
           <div class="tool-icon mb-3">🗺️</div>
           <h5 class="card-title">AI Trip Planner</h5>
           <p class="card-text">Effortlessly create custom itineraries for any destination. Just enter your city, duration, and interests—our AI will do the rest.</p>
-          <a href="AItripPlanner.html" class="btn btn-tool text-white">Open Tool</a>
+          <a href="#" class="btn btn-tool-un text-white" aria-disabled="true" disabled>Under Development</a>
         </div>
       </div>
 
@@ -176,7 +170,7 @@
           <div class="tool-icon mb-3">🧳</div>
           <h5 class="card-title">Packing Assistant</h5>
           <p class="card-text">Not sure what to pack? Our smart assistant generates a checklist based on your trip type, weather, and duration.</p>
-          <a href="#" class="btn btn-tool text-white disabled">Coming Soon</a>
+          <a href="#Coming Soon" class="btn btn-tool-soon text-white">Coming Soon</a>
         </div>
       </div>
 
@@ -196,7 +190,7 @@
           <div class="tool-icon mb-3">📍</div>
           <h5 class="card-title">Nearby Attractions Finder</h5>
           <p class="card-text">Discover popular landmarks, eateries, and local spots near you using your location. Travel like a local.</p>
-          <a href="#" class="btn btn-tool text-white disabled">Coming Soon</a>
+          <a href="#Coming Soon" class="btn btn-tool-soon text-white">Coming Soon</a>
         </div>
       </div>
 
@@ -205,7 +199,7 @@
 
   <!-- Why Use Travel Helper -->
   <div class="container why-use">
-    <h2 class="section-title">Why Use Travel Helper?</h2>
+    <h2 class="section-title-why">Why Use Travel Helper?</h2>
     <div class="row text-center">
       <div class="col-md-4">
         <h5>✅ All-In-One Travel Toolkit</h5>
@@ -222,47 +216,105 @@
     </div>
   </div>
 
-  <!-- Testimonials Section -->
-  <div class="container my-5">
-    <h2 class="section-title">What Travelers Say</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card testimonial-card">
-          <img src="./assets/user1.jpg" alt="User 1">
-          <h5>John Doe</h5>
-          <p>"The AI Trip Planner saved me so much time! I had a perfect itinerary in minutes."</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card testimonial-card">
-          <img src="./assets/user2.jpg" alt="User 2">
-          <h5>Jane Smith</h5>
-          <p>"I loved the Currency Converter. It made budgeting for my trip so much easier!"</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card testimonial-card">
-          <img src="./assets/user3.jpg" alt="User 3">
-          <h5>Emily Johnson</h5>
-          <p>"The Weather Forecast tool helped me pack perfectly for my trip. Highly recommend!"</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Feedback Section -->
   <div class="container feedback-section">
     <h2 class="section-title">Your Ideas Matter</h2>
     <p>Think we missed something? Have a brilliant travel tool idea? We'd love to hear it!</p>
-    <a href="https://forms.visme.co/suggest-tool" class="btn btn-outline-primary">Suggest a Tool</a>
+    <a href="Contact.html" class="btn btn-outline-primary">Suggest a Tool</a>
   </div>
 
   <!-- Footer -->
-  <footer class="footer">
-    <p class="mb-0">© 2025 Destination Delight. Built with ❤️ for smart travelers.</p>
-  </footer>
+  <footer class="bg-body-secondary">
+  <ul class="nav justify-content-center">
+    <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+    <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About Us</a></li>
+    <li class="nav-item"><a href="PopularDestination.html" class="nav-link px-2 text-body-secondary">Popular Destination</a></li>
+    <li class="nav-item"><a href="Blog.html" class="nav-link px-2 text-body-secondary">Blogs</a></li>
+    <li class="nav-item"><a href="Contact.html" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+  </ul>
+  <p class="text-center text-body-secondary">All Rights Reserved © 2024 Developer,<br> Designed & Developed by <i>Vaibhav Modi</i></p>
+</footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+<script>
+  const sr = ScrollReveal({
+    reset: false,
+    distance: '60px',
+    duration: 1000,
+    delay: 200
+  });
+
+  // Navbar
+  sr.reveal('.navbar', {
+    origin: 'top',
+    delay: 100
+  });
+
+  // Hero Section
+  sr.reveal('.hero-section h1', {
+    origin: 'top',
+    delay: 200
+  });
+
+  sr.reveal('.hero-section p', {
+    origin: 'bottom',
+    delay: 300
+  });
+
+  // Section Titles
+  sr.reveal('.section-title', {
+    origin: 'top',
+    delay: 100
+  });
+
+  sr.reveal('.section-subtitle', {
+    origin: 'bottom',
+    delay: 200
+  });
+
+  // Tool Cards
+  sr.reveal('.tool-card', {
+    origin: 'bottom',
+    interval: 200
+  });
+
+  // "Why Use Travel Helper?" Section
+  sr.reveal('.why-use h2', {
+    origin: 'top',
+    delay: 100
+  });
+
+  sr.reveal('.why-use .col-md-4', {
+    origin: 'bottom',
+    interval: 200
+  });
+
+  // Feedback Section
+  sr.reveal('.feedback-section h2', {
+    origin: 'top',
+    delay: 100
+  });
+
+  sr.reveal('.feedback-section p', {
+    origin: 'bottom',
+    delay: 200
+  });
+
+  sr.reveal('.feedback-section a', {
+    origin: 'bottom',
+    delay: 300
+  });
+
+  // Footer
+  sr.reveal('footer', {
+    origin: 'bottom',
+    delay: 300
+  });
+</script>
+
+
 </body>
 </html>
