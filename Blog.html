@@ -57,7 +57,7 @@
       .card:hover {
         transform: translateY(-6px);
       }
-      .card-img-top {
+      .card-img loading="lazy"-top {
         height: 200px;
         object-fit: cover;
       }
@@ -70,7 +70,7 @@
         padding: 0.5rem 1.2rem;
         border-radius: 20px;
       }
-      .author-img {
+      .author-img loading="lazy" {
         width: 100px;
         height: 100px;
         border-radius: 50%;
@@ -90,7 +90,7 @@
     <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary" id="navbar" style="box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.1);">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
-          <img
+          <img loading="lazy"
             src="./assets/Destination Delight (1).png"
             alt="Logo"
             width="50"
@@ -166,9 +166,9 @@
       <div class="card mb-4 shadow-lg" id="featuredBlog">
         <div class="row g-0">
           <div class="col-md-5">
-            <img
+            <img loading="lazy"
               src="assets/Rajsthanforblog.jpg"
-              class="img-fluid rounded-start"
+              class="img loading="lazy"-fluid rounded-start"
               alt="Taj Mahal"
             />
           </div>
@@ -195,9 +195,9 @@
       <div class="card mb-4 shadow-lg" id="featuredBlog">
         <div class="row g-0">
           <div class="col-md-5">
-            <img
+            <img loading="lazy"
               src="assets/honeyforblog.jpg"
-              class="img-fluid rounded-start"
+              class="img loading="lazy"-fluid rounded-start"
               alt="Taj Mahal"
             />
           </div>
@@ -225,9 +225,9 @@
       <div class="card mb-4 shadow-lg" id="featuredBlog">
         <div class="row g-0">
           <div class="col-md-5">
-            <img
+            <img loading="lazy"
               src="assets/lehforblog.jpg"
-              class="img-fluid rounded-start"
+              class="img loading="lazy"-fluid rounded-start"
               alt="Taj Mahal"
             />
           </div>
@@ -277,10 +277,10 @@
         <div class="col" id="authorSpotlight1">
           <div class="card mx-auto text-center shadow" style="max-width: 500px">
             <div class="card-body">
-              <img
+              <img loading="lazy"
                 src="assets/Mine Image.jpg"
                 alt="Author"
-                class="author-img mb-3"
+                class="author-img loading="lazy" mb-3"
               />
               <h5 class="card-title">Vaibhav Modi</h5>
               <p class="card-text">
@@ -294,10 +294,10 @@
         <div class="col" id="authorSpotlight2">
           <div class="card mx-auto text-center shadow" style="max-width: 500px">
             <div class="card-body">
-              <img
+              <img loading="lazy"
                 src="assets/Mine Image.jpg"
                 alt="Author"
-                class="author-img mb-3"
+                class="author-img loading="lazy" mb-3"
               />
               <h5 class="card-title">Vaibhav Modi</h5>
               <p class="card-text">
@@ -473,7 +473,7 @@
             blogCard.className = "col-md-4";
             blogCard.innerHTML = `
             <div class="card h-100">
-              <img src="${blog.image}" class="card-img-top" alt="${blog.title}">
+              <img loading="lazy" src="${blog.image}" class="card-img loading="lazy"-top" alt="${blog.title}">
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${blog.title}</h5>
                 <p class="card-text">${blog.summary}</p>
@@ -514,7 +514,7 @@
     distance: '60px'
   })
 
-  sr.reveal('.hero img', {
+  sr.reveal('.hero img loading="lazy"', {
     delay: 400,
     origin: 'inside',
     distance: '60px'
